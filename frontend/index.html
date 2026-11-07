@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Список задач</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="brand">Taskboard</p>
+        <h1>Список задач</h1>
+        <p class="lead">Добавляйте, редактируйте и упорядочивайте дела — всё сохраняется на сервере.</p>
+        <button type="button" class="btn btn-primary" id="open-create">Добавить задачу</button>
+      </header>
+
+      <main class="panel">
+        <div class="panel-head">
+          <h2>Ваши задачи</h2>
+          <p id="task-count">Загрузка…</p>
+        </div>
+        <ul class="task-list" id="task-list" aria-live="polite"></ul>
+        <p class="empty" id="empty-state" hidden>Пока нет задач. Нажмите «Добавить задачу», чтобы начать.</p>
+      </main>
+    </div>
+
+    <div class="modal" id="task-modal" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="modal-head">
+          <h2 id="modal-title">Новая задача</h2>
+          <button type="button" class="icon-btn" data-close aria-label="Закрыть">×</button>
+        </header>
+        <form id="task-form">
+          <label>
+            Название
+            <input type="text" id="task-title" name="title" maxlength="255" required placeholder="Например: Купить молоко" />
+          </label>
+          <label>
+            Описание
+            <textarea id="task-description" name="description" rows="4" placeholder="Подробности по желанию"></textarea>
+          </label>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" data-close>Отмена</button>
+            <button type="submit" class="btn btn-primary" id="modal-submit">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" hidden></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
